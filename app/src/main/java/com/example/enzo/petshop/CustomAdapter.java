@@ -5,8 +5,10 @@ package com.example.enzo.petshop;
  */
 
 import android.content.Context;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -35,7 +37,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(CustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CustomAdapter.ViewHolder holder, int position) {
         MyList myList = list.get(position);
         holder.textViewNombre.setText(myList.getNombre_veterinaria());
         holder.textViewDesc.setText(myList.getDescripcion_veterinaria());
@@ -45,8 +47,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             @Override
             public void onClick(View view) {
 
-                //will show popup menu here
-
+                //will show popup menu here//creating a popup menu
+                PopupMenu popup = new PopupMenu(mCtx, holder.buttonViewOption);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.options_menu);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu1:
+                                //handle menu1 click
+                                break;
+                            case R.id.menu2:
+                                //handle menu2 click
+                                break;
+                            case R.id.menu3:
+                                //handle menu3 click
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                //displaying the popup
+                popup.show();
             }
         });
     }
