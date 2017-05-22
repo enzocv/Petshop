@@ -10,6 +10,8 @@ public class MyList {
     private String descripcion_veterinaria;
     private String direccion_veterinaria;
 
+    public MyList(){}
+
     public MyList(String nombre_veterinaria, String descripcion_veterinaria, String direccion_veterinaria) {
         this.nombre_veterinaria = nombre_veterinaria;
         this.descripcion_veterinaria = descripcion_veterinaria;
