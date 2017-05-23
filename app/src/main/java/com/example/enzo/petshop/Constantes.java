@@ -15,10 +15,16 @@ public class Constantes {
      */
     public static final int CODIGO_ACTUALIZACION = 101;
 
+    private static final String PUERTO_HOST = "3306";
+
+    private static final String IP = "http://10.0.0.1:";
 
     /**
      * URL del Web Service
      */
-    public static final String GET =  "http://127.0.0.1/py_webservices/obtener_veterinarias.php";
+    public static final String GET =
+            IP
+            + PUERTO_HOST
+            + "/py_webservices/obtener_veterinarias.php";
 
 }

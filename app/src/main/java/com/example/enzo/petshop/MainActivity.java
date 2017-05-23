@@ -125,55 +125,54 @@ public class MainActivity extends AppCompatActivity {
     private void loadRecyclerViewItem() {
         //you can fetch the data from server or some apis
         //for this tutorial I am adding some dummy data directly
-        for (int i = 1; i <= 8; i++) {
-            MyList myList = new MyList(
-                    "Veterinaria " + i,
-                    "Descripcion de la Veterinaria",
-                    "direccion Veterinaria"
-            );
-            list.add(myList);
-        }
-        adapter = new CustomAdapter(list, this);
-        recyclerView.setAdapter(adapter);
+//        for (int i = 1; i <= 8; i++) {
+//            MyList myList = new MyList(
+//                    "Veterinaria " + i,
+//                    "Descripcion de la Veterinaria",
+//                    "direccion Veterinaria"
+//            );
+//            list.add(myList);
+//        }
+//        adapter = new CustomAdapter(list, this);
+//        recyclerView.setAdapter(adapter);
 
-//        StringRequest stringrequest = new StringRequest(Request.Method.GET,
-//                "http://localhost/py_webservices/obtener_veterinarias.php",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            JSONArray array = jsonObject.getJSONArray("metas");
-//
-//                            for (int i = 0; i < array.length(); i++){
-//                                JSONObject object = array.getJSONObject(i);
-//                                MyList lisItem = new MyList(
-//                                        object.getString("nombre"),
-//                                        object.getString("descripcion"),
-//                                        object.getString("direccion")
-//                                );
-//                                list.add(lisItem);
-//
-//                                Toast.makeText(getApplicationContext(),array.length() , Toast.LENGTH_LONG).show();
-//
-//
-//                                adapter = new CustomAdapter(list, getApplicationContext());
-//                                recyclerView.setAdapter(adapter);
-//
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.add(stringrequest);
+        StringRequest stringrequest = new StringRequest(Request.Method.GET,
+                Constantes.GET,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array = jsonObject.getJSONArray("metas");
+
+
+                            for (int i = 0; i < array.length(); i++){
+                                JSONObject object = array.getJSONObject(i);
+                                MyList lisItem = new MyList(
+                                        object.getString("nombre"),
+                                        object.getString("descripcion"),
+                                        object.getString("direccion")
+                                );
+                                Toast.makeText(getApplicationContext(),"HOlA" , Toast.LENGTH_LONG).show();
+                                list.add(lisItem);
+
+                                adapter = new CustomAdapter(list, getApplicationContext());
+                                recyclerView.setAdapter(adapter);
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage() + error.getStackTrace(), Toast.LENGTH_LONG).show();
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringrequest);
 
     }
 
