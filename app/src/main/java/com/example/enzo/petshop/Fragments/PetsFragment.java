@@ -3,17 +3,14 @@ package com.example.enzo.petshop.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.enzo.petshop.CustomAdapter;
-import com.example.enzo.petshop.MyList;
+import com.example.enzo.petshop.Classes.MyList;
 import com.example.enzo.petshop.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,7 +48,7 @@ public class PetsFragment extends Fragment {
     private void loadRecyclerViewItem() {
         //you can fetch the data from server or some apis
         //for this tutorial I am adding some dummy data directly
-        for (int i = 1; i <= 8; i++) {
+        /*for (int i = 1; i <= 8; i++) {
             MyList myList = new MyList(
                     "Veterinaria " + i,
                     "Descripcion de la Veterinaria",
@@ -61,6 +58,6 @@ public class PetsFragment extends Fragment {
         }
         adapter = new CustomAdapter(list, getContext());
         recyclerView.setAdapter(adapter);
-
+*/
     }
 }
